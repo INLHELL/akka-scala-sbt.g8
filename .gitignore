@@ -1,9 +1,14 @@
 *.un~
 *~
-.netrwhist
 Session.vim
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
 target/
 .idea/
 .idea_modules
+target/
+boot/
+project/plugins/project/
+lib_managed/
+src_managed/
+project/boot/
