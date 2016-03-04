@@ -1,7 +1,8 @@
-package $organization$
+package $package$
 
 import akka.actor._
 import scala.concurrent.duration._
+import java.util.concurrent._
 
 case object Tick
 case object Get
@@ -31,6 +32,9 @@ class RunLoop extends Actor {
   context.system.scheduler.schedule(1.second, 1.second, counter, Tick)
   context.system.scheduler.schedule(3.seconds, 3.seconds, counter, Get)(context.dispatcher, reporter)
 
+  TimeUnit.SECONDS.sleep(10)
+  context.system.terminate()
+
   def receive = {
     case _ =>
   }
@@ -38,6 +42,6 @@ class RunLoop extends Actor {
 
 object $name;format="Camel"$ extends App {
 
-  akka.Main.main(Array("$organization$.RunLoop"))
+  akka.Main.main(Array("$package$.RunLoop"))
 
 }
